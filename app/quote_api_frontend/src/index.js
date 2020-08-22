@@ -45,6 +45,15 @@ function postFetch(content, category_id) {
     })
     .then(response => response.json())
     .then(quote => {
-        
+        const quoteData = quote.data.attributes 
+        const quoteMarkup = `
+        <div data-id=${quote.id}>
+        <h3>${quoteData.content}</h3>
+        <p>${quoteData.category.name}</p>
+        <button data-id=${quoteData.id}>edit</button>
+        </div>
+        <br></br>`;
+
+        document.querySelector('#quote-container').innerHTML += quoteMarkup;
     })
 }
