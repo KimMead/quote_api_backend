@@ -13,21 +13,14 @@ function getQuotes() {
     .then(response => response.json())
     .then(quotes => {
         quotes.data.forEach(quote => {
-        render(quote)
+        
+        let newQuote = new Quote(quote, quote.attributes)
+
+        document.querySelector('#quote-container').innerHTML += newQuote.renderQuoteCard()
+        
+        // render(quote)
         })
     })
-}
-
-function render(quote) {
-    const quoteMarkup = `
-        <div data-id=${quote.id}>
-        <h3>${quote.attributes.content}</h3>
-        <p>${quote.attributes.category.name}</p>
-        <button data-id=${quote.id}>edit</button>
-        </div>
-        <br></br>`;
-
-        document.querySelector('#quote-container').innerHTML +=quoteMarkup 
 }
 
 function createFormHandler(e) {
