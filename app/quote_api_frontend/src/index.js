@@ -13,17 +13,21 @@ function getQuotes() {
     .then(response => response.json())
     .then(quotes => {
         quotes.data.forEach(quote => {
-            const quoteMarkup = `
-            <div data-id=${quote.id}>
-            <h3>${quote.attributes.content}</h3>
-            <p>${quote.attributes.category.name}</p>
-            <button data-id=${quote.id}>edit</button>
-            </div>
-            <br></br>`;
-
-            document.querySelector('#quote-container').innerHTML +=quoteMarkup 
+        render(quote)
         })
     })
+}
+
+function render(quote) {
+    const quoteMarkup = `
+        <div data-id=${quote.id}>
+        <h3>${quote.attributes.content}</h3>
+        <p>${quote.attributes.category.name}</p>
+        <button data-id=${quote.id}>edit</button>
+        </div>
+        <br></br>`;
+
+        document.querySelector('#quote-container').innerHTML +=quoteMarkup 
 }
 
 function createFormHandler(e) {
@@ -45,15 +49,8 @@ function postFetch(content, category_id) {
     })
     .then(response => response.json())
     .then(quote => {
-        const quoteData = quote.data.attributes 
-        const quoteMarkup = `
-        <div data-id=${quote.id}>
-        <h3>${quoteData.content}</h3>
-        <p>${quoteData.category.name}</p>
-        <button data-id=${quoteData.id}>edit</button>
-        </div>
-        <br></br>`;
-
-        document.querySelector('#quote-container').innerHTML += quoteMarkup;
+        console.log(quote);
+        const quoteData = quote.data 
+        render(quoteData)
     })
 }

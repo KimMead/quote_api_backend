@@ -13,6 +13,10 @@ class QuotesController < ApplicationController
         end 
     end 
 
+    def update
+    end 
+
+
     private
 
     def quote_params
