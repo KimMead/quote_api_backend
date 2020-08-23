@@ -17,8 +17,7 @@ function getQuotes() {
         let newQuote = new Quote(quote, quote.attributes)
 
         document.querySelector('#quote-container').innerHTML += newQuote.renderQuoteCard()
-        
-        // render(quote)
+
         })
     })
 }
@@ -44,6 +43,9 @@ function postFetch(content, category_id) {
     .then(quote => {
         console.log(quote);
         const quoteData = quote.data 
-        render(quoteData)
+        // renderQuoteCard(quoteData)
+        let newQuote = new Quote(quoteData, quoteData.attributes)
+    document.querySelector('#quote-container').innerHTML += newQuote.renderQuoteCard()
     })
 }
+

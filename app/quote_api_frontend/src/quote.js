@@ -21,3 +21,4 @@ class Quote {
 }
 
 Quote.all = [];
+

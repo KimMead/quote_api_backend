@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+    before_action :find_note, only: [:update]
     def index
         quotes = Quote.all
         render json: QuoteSerializer.new(quotes)
@@ -13,14 +14,24 @@ class QuotesController < ApplicationController
         end 
     end 
 
-    def update
+    def update 
+        quote.update(quote_params)
+        if quote.save 
+            render json: quote, status: 200
+        else 
+            render json: {errors: quote.errors.full_messages}
+        end 
     end 
-
-
+    
+    
     private
 
     def quote_params
         params.require(:quote).permit(:content, :category_id)
+    end 
+
+    def find_quote 
+        quote = Quote.find(params[:id])
     end 
 
 
