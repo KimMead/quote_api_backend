@@ -1,9 +1,13 @@
 
 h1 {
-    padding: 30px;
+    padding: 20px;
 }
 
 .form-container {
+    padding: 10px;
+  }
+
+  h3 {
     padding: 20px;
   }
 
@@ -19,6 +23,7 @@ textarea {
     width: 800px;
     padding: 10px;
     border-radius: 10px;
+    width: 100%;
 }
 
 select#categories {
@@ -33,12 +38,16 @@ input#create-button.submit {
 
 #quote-container {
     background-color: #e0dddd;
-    box: 10px 10px rgb(112, 107, 107);
-    padding: 20px;
-    border-radius: 10px;
+    box: 5px 5px rgb(112, 107, 107);
+    padding: 5px;
+    border-radius: 5px;
 }
 
 button {
     border-radius: 5px;
     background-color: rgb(250, 49, 206);
+}
+
+.card-body {
+    padding: 15px;
 }
